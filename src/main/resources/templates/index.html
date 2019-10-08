@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Translate DNA to Protein Sequence</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h1 class = "text-primary"> DNA - Protein Translation Demo </h1>
+            <form action="#" th:action="@{/}" th:object="${translate}" method="post">
+                <div class="form-group">
+                    <label>Enter DNA Sequence</label> 
+                    <textarea id="input" class="form-control" rows="3" th:field="*{input}" /></textarea>
+                    <small class="form-text text-muted">Example: <a href="#" onclick="tryExample()">Human sapiens insulin</a>.</small>
+                </div>
+                    
+                <button type="submit" class="btn btn-primary">Translate</button> 
+                <button type="reset" class="btn btn-light" onclick="location.href='/'">Reset</button>
+            </form>
+            <div class="text-center overflow-auto" th:if="${translate.error}">
+                <h3>Error</h3>
+                <p th:text="${translate.error}" />
+            </div>
+            <div class="text-center overflow-auto" th:if="${translate.result}">
+                <h3>Output Protein Sequence</h3>
+                <textarea class="form-control" rows="3" th:text="${translate.result}" />
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function tryExample(){
+        var element = document.getElementById("input");
+        element.innerHTML = "AGCCCTCCAGGACAGGCTGCATCAGAAGAGGCCATCAAGCAGGTCTGTTCCAAGGGCCTTTGCGTCAGGTGGGCTCAGGATTCCAGGGTGGCTGGACCCCAGATCACTGTCCTTCTGCCATGGCCCTGTGGATGCGCCTCCTGCCCCTGCTGGCGCTGCTGGCCCTCTGGGGACCTGACCCAGCCGCAGCCTTTGTGAACCAACACCTGTGCGGCTCACACCTGGTGGAAGCTCTCTACCTAGTGTGCGGGGAACGAGGCTTCTTCTACACACCCAAGACCCGCCGGGAGGCAGAGGACCTGCAGGTGGGGCAGGTGGAGCTGGGCGGGGGCCCTGGTGCAGGCAGCCTGCAGCCCTTGGCCCTGGAGGGGTCCCTGCAGAAGCGTGGCATTGTGGAACAATGCTGTACCAGCATCTGCTCCCTCTACCAGCTGGAGAACTACTGCAACTAGACGCAGCCCGCAGGCAGCCCCACACCCGCCGCCTCCTGCACCGAGAGAGATGGAATAAAGCCCTTGAACCAGC";        
+    }
+</script>
+</body>
+</html>
+
