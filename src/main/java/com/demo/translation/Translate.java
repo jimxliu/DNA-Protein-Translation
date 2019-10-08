@@ -47,11 +47,11 @@ public class Translate {
             logger.info("Successfully translated the DNA Sequence: {} to Protein Sequence: {}", input, result);
         } catch (CompoundNotFoundException e){
             error = e.toString();
-            logger.error("Error: {}", error);
+            logger.error(error);
             
         } catch (Exception e) {
             error = e.toString();
-            logger.error("Error: {}", error);
+            logger.error(error);
         }
     }
 }
