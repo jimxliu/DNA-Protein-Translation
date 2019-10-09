@@ -16,7 +16,6 @@ public class Translate {
     private String input;
     private String result;    
     private String error;    
-    private String example = "AGCCCTCCAGGACAGGCTGCATCAGAAGAGGCCATCAAGCAGGTCTGTTCCAAGGGCCTTTGCGTCAGGTGGGCTCAGGATTCCAGGGTGGCTGGACCCCAGATCACTGTCCTTCTGCCATGGCCCTGTGGATGCGCCTCCTGCCCCTGCTGGCGCTGCTGGCCCTCTGGGGACCTGACCCAGCCGCAGCCTTTGTGAACCAACACCTGTGCGGCTCACACCTGGTGGAAGCTCTCTACCTAGTGTGCGGGGAACGAGGCTTCTTCTACACACCCAAGACCCGCCGGGAGGCAGAGGACCTGCAGGTGGGGCAGGTGGAGCTGGGCGGGGGCCCTGGTGCAGGCAGCCTGCAGCCCTTGGCCCTGGAGGGGTCCCTGCAGAAGCGTGGCATTGTGGAACAATGCTGTACCAGCATCTGCTCCCTCTACCAGCTGGAGAACTACTGCAACTAGACGCAGCCCGCAGGCAGCCCCACACCCGCCGCCTCCTGCACCGAGAGAGATGGAATAAAGCCCTTGAACCAGC";
 
     public void setInput(String input){
         this.input = input.replaceAll("\\s+", "").toUpperCase();
@@ -44,7 +43,7 @@ public class Translate {
             RNASequence rna = dna.getRNASequence(e);
             ProteinSequence protein = rna.getProteinSequence(e);
             result = protein.toString();            
-            logger.info("Successfully translated the DNA Sequence: {} to Protein Sequence: {}", input, result);
+            logger.info("Successfully translated");
         } catch (CompoundNotFoundException e){
             error = e.toString();
             logger.error(error);
